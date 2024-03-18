@@ -27,13 +27,13 @@ it('shows courses overview', function () {
 
 it('shows only released courses', function () {
     // arrange
-    $relasedCourse = Course::factory()->released()->create();
+    $releasedCourse = Course::factory()->released()->create();
     $notReleasedCourse = Course::factory()->create();
 
     //act & Assert
     get(route('home'))
         ->assertSeeText([
-            $relasedCourse->title,
+            $releasedCourse->title,
         ])
         ->assertDontSee([
             $notReleasedCourse->title
