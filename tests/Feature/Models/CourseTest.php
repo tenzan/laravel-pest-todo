@@ -11,7 +11,7 @@ it('only returns released courses for released scope', function () {
     Course::factory()->create();
 
     // act & assert
-     expect(Course::released()->get())
-         ->toHaveCount(1)
-         ->first()->id->toEqual(1);
+    expect(Course::released()->get())
+        ->toHaveCount(1)
+        ->first()->id->toEqual(1);
 });

@@ -3,6 +3,7 @@
 use App\Models\Course;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\get;
 
 uses(RefreshDatabase::class);
@@ -21,7 +22,7 @@ it('shows courses overview', function () {
             $secondCourse->title,
             $secondCourse->description,
             $lastCourse->title,
-            $lastCourse->description
+            $lastCourse->description,
         ]);
 });
 
@@ -36,7 +37,7 @@ it('shows only released courses', function () {
             $releasedCourse->title,
         ])
         ->assertDontSee([
-            $notReleasedCourse->title
+            $notReleasedCourse->title,
         ]);
 });
 
@@ -49,9 +50,6 @@ it('shows courses by release date', function () {
     get(route('home'))
         ->assertSeeInOrder([
             $newestReleasedCourse->title,
-            $releasedCourse->title
+            $releasedCourse->title,
         ]);
 });
-
-
-
